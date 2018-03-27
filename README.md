@@ -1,9 +1,13 @@
-# reactnativereduxnotes
-React Native Redux Notes
+# React Native Redux Notes
 
 ## Tasks
 - Create Store
+This should be called once. Probably put this in the App root
+```
+const store = createStore(reducer);
+```
 - Create Actions
+Actions should 
 - Create a mapStateToProps function
 
 ```
@@ -19,8 +23,17 @@ function mapStateToProps(state) {
 ```
 export default connect(mapStateToProps)(Counter);
 ```
-- Wrap App in `<Provider> </Provider>` tags
-- Create Reducers to respond to Actions
+- Wrap App in `<Provider> </Provider>` tags and pass the Store to it as a Prop
+```
+const App = () => (
+  <Provider store={store}>
+    <Counter/>
+  </Provider>
+);
+```
+- Create Reducers to take the current State and Actions, and return a new state
+Reducers should be switch statements, applying
+Reducers should always fallback to returning the original state (in case there is no change)
 ```
 function reducer(state = initialState, action) {
   switch(action.type) {
@@ -37,7 +50,12 @@ function reducer(state = initialState, action) {
   }
 }
 ```
-
+- Define a default state above the reducer
+```
+const initialState = {
+  count: 0
+};
+```
 - Ensure components receiving data from the Store use Props
 e.g. 
 ```
