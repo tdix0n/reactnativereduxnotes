@@ -2,11 +2,13 @@
 
 ## Tasks
 - Create Store
+
 This should be called once. Probably put this in the App root
 ```
 const store = createStore(reducer);
 ```
 - Create Actions
+
 Actions should 
 - Create a mapStateToProps function
 
@@ -32,7 +34,9 @@ const App = () => (
 );
 ```
 - Create Reducers to take the current State and Actions, and return a new state
+
 Reducers should be switch statements, applying
+
 Reducers should always fallback to returning the original state (in case there is no change)
 ```
 function reducer(state = initialState, action) {
@@ -56,7 +60,10 @@ const initialState = {
   count: 0
 };
 ```
+By calling reducer with `state = initialState` as a parameter, if there is no state yet (`undefined`), it will use `initialState` as the default 
+
 - Ensure components receiving data from the Store use Props
+
 e.g. 
 ```
   render() {
